@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 1. Metadata and Setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Shaheed M | AI & Data Science Developer</title>
+    <!-- Use the Inter font for a modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Social Icons (GitHub, LinkedIn, Theme Toggle) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* ========================================================================= */
+        /* 2. Global CSS Variables and Aesthetics (Deep Navy & Bright Teal Theme) */
+        /* ========================================================================= */
+        :root {
+            /* Light Mode Colors (Swapped to a professional, bright theme) */
+            --bg-color: #ffffff;        /* Pure White */
+            --text-color: #1a202c;      /* Dark Gray/Black */
+            --primary-color: #3182ce;   /* Blue-600 (Primary accent) */
+            --secondary-bg: #e2e8f0;    /* Light Gray */
+            --card-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --border-color: #cbd5e1;    /* Light Slate */
+        }
+
+        .dark-mode {
+            /* Dark Mode Colors (Deep Navy & Bright Teal) */
+            --bg-color: #0f172a;        /* Deep Navy (Slate-900) */
+            --text-color: #f1f5f9;      /* Off-White */
+            --primary-color: #2dd4bf;   /* Bright Teal (Teal-400 - Attractive Accent) */
+            --secondary-bg: #1e293b;    /* Dark Slate (Used for secondary backgrounds/footer) */
+            --card-bg: #111827;         /* Very Dark Gray */
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            --border-color: #334155;    /* Darker Slate */
+        }
+
+        /* Base styles and smooth transitions */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.5s ease, color 0.5s ease; /* Smooth theme transition */
+            min-height: 100vh;
+        }
+
+        /* Utility classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem; /* Responsive padding */
+        }
+
+        section {
+            padding: 4rem 0;
+            /* Border only applies to sections above the footer */
+            border-bottom: 1px solid var(--border-color); 
+        }
+
+        /* Removed border logic for #feedback as the section is removed */
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* ========================================================================= */
+        /* 3. Header and Navigation */
+        /* ========================================================================= */
+        .header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        /* New Navigation Styles for Aesthetic Design */
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem; /* Space between links */
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        /* Underline effect on hover */
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease-in-out;
+        }
+        
+        .main-nav a:hover,
+        .main-nav a:focus {
+            color: var(--primary-color);
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a:focus::after {
+            width: 100%;
+        }
+
+
+        /* Theme Toggle Button Styling */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 50%;
+            margin-left: 1.5rem; /* Space between nav and toggle */
+        }
+        
+        .theme-toggle:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        /* Utility container to group Nav and Toggle for responsive layout */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+        }
+
+
+        /* ========================================================================= */
+        /* 4. Hero Section (Introduction) */
+        /* ========================================================================= */
+        #hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 1.5rem;
+            background-color: var(--secondary-bg);
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(2deg); /* Aesthetic hover animation */
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            max-width: 800px;
+            margin-top: 1rem;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.8rem;
+            margin: 0 0.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px); /* Subtle animation */
+        }
+
+        /* ========================================================================= */
+        /* 5. Skills Section */
+        /* ========================================================================= */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-group {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-group:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-group h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-group ul {
+            list-style: none;
+        }
+
+        .skill-group ul li {
+            padding: 0.3rem 0;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 1rem;
+        }
+
+        .skill-group ul li:last-child {
+            border-bottom: none;
+        }
+
+
+        /* ========================================================================= */
+        /* 6. Projects Section */
+        /* ========================================================================= */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Styling for the anchor element wrapping the card */
+        .project-link {
+            text-decoration: none; /* Remove underline from link */
+            color: inherit; /* Inherit text color from parent */
+            display: block; /* Make the link fill the grid area */
+        }
+        
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%; /* Ensure card fills the link height */
+        }
+
+        /* Apply hover effect to the card itself via the parent link */
+        .project-link:hover .project-card {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color); /* Highlight border on hover */
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .project-card strong {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+
+        /* ========================================================================= */
+        /* 7. Resume / Experience Section */
+        /* ========================================================================= */
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        /* Vertical line for the timeline aesthetic */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 2px;
+            height: 100%;
+            background-color: var(--border-color);
+        }
+
+        /* Circle for the timeline point */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -8px; /* Offset to center on the line */
+            top: 0.5rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 4px solid var(--secondary-bg);
+            z-index: 1;
+        }
+
+        .timeline-content {
+            background-color: var(--card-bg);
+            padding: 1.2rem;
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow);
+            width: 100%;
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+        }
+
+        .timeline-content p {
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+        
+        .timeline-content ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            padding-top: 0.5rem;
+        }
+
+        .timeline-content ul li {
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Link styling for certifications */
+        .timeline-content ul li a {
+            color: var(--primary-color);
+            text-decoration: underline;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .timeline-content ul li a:hover {
+            opacity: 0.8;
+        }
+
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--text-color);
+            opacity: 0.7;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Fix the last item's line */
+        .timeline-item:last-child::before {
+            height: 0;
+        }
+        
+        /* 8. The previous Feedback Section CSS is now obsolete due to removal. */
+
+        /* ========================================================================= */
+        /* 9. Footer */
+        /* ========================================================================= */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--secondary-bg);
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ========================================================================= */
+        /* 10. Responsive Design (Mobile First Adjustments) */
+        /* ========================================================================= */
+        @media (max-width: 768px) {
+            #hero {
+                padding: 4rem 1rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            
+            /* Hide navigation on smaller screens to keep it clean */
+            .main-nav {
+                display: none;
+            }
+
+            /* Adjust controls layout for mobile */
+            .nav-content {
+                justify-content: space-between; /* Keep logo and toggle separated */
+            }
+
+            /* Remove extra margin when nav is hidden */
+            .theme-toggle {
+                margin-left: 0; 
+            }
+        }
+        
+        /* ========================================================================= */
+        /* 11. Aesthetic Animation (Scroll Reveal) */
+        /* ========================================================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 12. Header with Logo, Navigation, and Dark Mode Toggle -->
+    <header class="header">
+        <div class="container nav-content">
+            <span class="logo">Mohammed Shaheed M.</span>
+            
+            <!-- Navigation Links -->
+            <div class="nav-controls">
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#resume">Resume</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Dark Mode Toggle Button -->
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                    <i class="fas fa-sun"></i> <!-- Icon will be dynamically changed by JS -->
+                </button>
+            </div>
+            
+        </div>
+    </header>
+
+    <main>
+        <!-- 13. Hero Section: Name, Picture, Summary, and Socials -->
+        <section id="hero" class="hero reveal">
+            <!-- Profile Picture Placeholder -->
+            <img src="shhhh.jpg" 
+                 alt="Mohammed Shaheed M Profile Picture" class="profile-img">
+
+            <h1>Mohammed Shaheed M</h1>
+            <p>
+                Motivated and results-oriented software developer with strong expertise in machine learning and cloud-based application deployment. 
+                Adept at integrating software engineering principles with data-driven solutions to create efficient, scalable applications.
+            </p>
+
+            <!-- Social Links (GitHub and LinkedIn) -->
+            <div class="social-links">
+                <!-- IMPORTANT: Replace the '#' with your actual URLs -->
+                <a href="https://github.com/Shaheed978" target="_blank" aria-label="GitHub Profile">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mohammad-shaheedm/" target="_blank" aria-label="LinkedIn Profile">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:mohdmshd978@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- 14. Skills Section: Details from Resume -->
+        <section id="skills" class="reveal">
+            <div class="container">
+                <h2>Skills & Expertise</h2>
+                <div class="skills-grid">
+                    
+                    <div class="skill-group reveal">
+                        <h3>Programming & Web</h3>
+                        <ul>
+                            <li>Python</li>
+                            <li>Java, C</li>
+                            <li>JavaScript, HTML, CSS</li>
+                            <li>SQL (MySQL)</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-group reveal">
+                        <h3>Data Science & ML</h3>
+                        <ul>
+                            <li>TensorFlow, Scikit-learn</li>
+                            <li>Pandas, NumPy, Seaborn</li>
+                            <li>Predictive Modeling</li>
+                            <li>Data Manipulation & Viz</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-group reveal">
+                        <h3>Cloud & DevOps</h3>
+                        <ul>
+                            <li>AWS</li>
+                            <li>Docker</li>
+                            <li>Jenkins</li>
+                            <li>Git, GitHub</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-group reveal">
+                        <h3>Tools & Platforms</h3>
+                        <ul>
+                            <li>VS Code, PyCharm</li>
+                            <li>Jupyter Notebook</li>
+                            <li>Agile Methodologies</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 15. Projects Section: Key Portfolio Highlights -->
+        <section id="projects" class="reveal">
+            <div class="container">
+                <h2>Featured Projects</h2>
+                <div class="projects-grid">
+                    
+                    <!-- Project 1: Cricket Player Injury Risk Prediction -->
+                    <a href="https://github.com/Shaheed978/Cricket-Players-Injury-Risk-Prediction" target="_blank" class="project-link reveal">
+                        <!-- IMPORTANT: Replace the '#' in the href above with the actual project link (e.g., GitHub repo or live demo) -->
+                        <div class="project-card">
+                            <h3>Cricket Player Injury Risk Prediction</h3>
+                            <p>Developed and optimized a machine learning model using historical player data to accurately predict cricket player injury risks. Deployed as a web application.</p>
+                            <strong>Tools: Python, Pandas, Scikit-learn, Streamlit</strong>
+                        </div>
+                    </a>
+
+                    <!-- Project 2: Virtual Mouse Control System -->
+                    <a href="https://github.com/Shaheed978/Virtual-Mouse-" target="_blank" class="project-link reveal">
+                         <!-- IMPORTANT: Replace the '#' in the href above with the actual project link (e.g., GitHub repo or live demo) -->
+                        <div class="project-card">
+                            <h3>Virtual Mouse Control System</h3>
+                            <p>Created a system utilizing hand gestures detected via webcam to control the mouse cursor, mapping movements to screen coordinates for seamless, hands-free interaction.</p>
+                            <strong>Tools: Python, OpenCV, HandTracking Module, NumPy</strong>
+                        </div>
+                    </a>
+
+                    <!-- Project 3: Ad Click Prediction Model -->
+                    <a href="https://github.com/Shaheed978/Predicting_Ad_Clicks_Classification_by_Using_Machine_Learning.ipynb" target="_blank" class="project-link reveal">
+                         <!-- IMPORTANT: Replace the '#' in the href above with the actual project link (e.g., GitHub repo or live demo) -->
+                        <div class="project-card">
+                            <h3>Ad Click Prediction Model</h3>
+                            <p>Built a classification model to predict user click-through-rate (CTR) on online advertisements based on demographic and behavioral data, evaluating multiple classifiers.</p>
+                            <strong>Tools: Python, Pandas, Scikit-learn, Matplotlib</strong>
+                        </div>
+                    </a>
+
+                    <!-- Project 4: Apartment Management System -->
+                    <a href="https://github.com/Shaheed978/Apartment-Management-DBMS-" target="_blank" class="project-link reveal">
+                         <!-- IMPORTANT: Replace the '#' in the href above with the actual project link (e.g., GitHub repo or live demo) -->
+                        <div class="project-card">
+                            <h3>Apartment Management System</h3>
+                            <p>A full-stack system for managing tenant information and maintenance requests, featuring secure, database-driven functionalities for administrators.</p>
+                            <strong>Tools: Python, MySQL, HTML, CSS</strong>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 16. Resume / Experience & Education Section -->
+        <section id="resume" class="reveal">
+            <div class="container">
+                <h2>Experience & Education</h2>
+                <div class="timeline">
+                    <!-- Internship Experience -->
+                    <div class="timeline-item reveal">
+                        <div class="timeline-content">
+                            <h3>Machine Learning Intern</h3>
+                            <p><strong>Seventh Sense Talent Solutions Pvt. Ltd.</strong></p>
+                            <span class="timeline-date">Sep 2024 – Jan 2025</span>
+                            <ul>
+                                <li>Worked on machine learning models, focusing on data preprocessing, model training, and evaluation using Python and TensorFlow.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Education -->
+                    <div class="timeline-item reveal">
+                        <div class="timeline-content">
+                            <h3>B.E. in Artificial Intelligence And Data Science</h3>
+                            <p><strong>Channabasaveshwara Institute of Technology</strong></p>
+                            <span class="timeline-date">Graduated: June 2025 | CGPA: 7.15</span>
+                            <p>Gubbi, Karnataka</p>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="timeline-item reveal">
+                        <div class="timeline-content">
+                            <h3>Certifications & Courses</h3>
+                            <ul>
+                                <!-- Added link to Udemy Certification -->
+                                <li>
+                                    <a href="udemy data science course.pdf" target="_blank">Udemy Data Science Bootcamp 2024</a>: Developed skills in data manipulation, visualization, predictive modeling, and machine learning.
+                                    <!-- IMPORTANT: Replace the '#' with your actual Udemy certificate verification link. -->
+                                </li>
+                                <!-- Added link to Accenture Simulation -->
+                                <li>
+                                    <a href="hzmoNKtzvAzXsEqx8_Accenture North America_kvAEjXHrrXLHaBHAv_1717388232903_completion_certificate.pdf" target="_blank">Accenture Job Simulation</a>: Enhanced data analytics, visualization, and client communication skills, demonstrating expertise in data cleaning and modeling.
+                                    <!-- IMPORTANT: Replace the '#' with your actual Accenture simulation certificate link. -->
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 17. Contact Section Placeholder (The old Feedback section is removed) -->
+        <section id="contact" class="reveal" style="border-bottom: none;">
+            <div class="container" style="text-align: center;">
+                <h2>Get In Touch</h2>
+                <p style="font-size: 1.25rem; margin-bottom: 1.5rem;">
+                    I'm currently seeking new opportunities. Feel free to connect!
+                </p>
+                <a href="mailto:mohdmshd978@gmail.com" 
+                   style="display: inline-block; padding: 0.75rem 2rem; background-color: var(--primary-color); color: var(--card-bg); text-decoration: none; border-radius: 0.5rem; font-weight: 600; transition: background-color 0.3s ease;">
+                   Email Me
+                </a>
+                <p style="margin-top: 1rem;">Phone: +91 7760123978</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 18. Footer (Updated numbering since feedback section was removed) -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Mohammed Shaheed M. All rights reserved.</p>
+            <!--<p>Built with HTML, CSS, and JavaScript.</p>-->
+        </div>
+    </footer>
+
+    <!-- 19. JavaScript for Interactivity and Animations (Updated numbering) -->
+    <script>
+        // Get elements
+        const html = document.documentElement;
+        const toggleButton = document.getElementById('theme-toggle');
+        const toggleIcon = toggleButton.querySelector('i');
+        const currentYearSpan = document.getElementById('current-year');
+        
+        // Set current year in footer
+        currentYearSpan.textContent = new Date().getFullYear();
+
+        /* --- Dark/Light Mode Logic (with Animation) --- */
+        
+        // 19.1. Function to set the theme
+        function setTheme(theme) {
+            // Remove/add 'dark-mode' class to the <html> element
+            html.classList.remove('light-mode', 'dark-mode');
+            html.classList.add(theme);
+            
+            // Update the icon and save preference to localStorage
+            if (theme === 'dark-mode') {
+                toggleIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark-mode');
+            } else {
+                toggleIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light-mode');
+            }
+        }
+
+        // 19.2. Event listener for the toggle button
+        toggleButton.addEventListener('click', () => {
+            const currentTheme = html.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+            const newTheme = currentTheme === 'dark-mode' ? 'light-mode' : 'dark-mode';
+            setTheme(newTheme);
+        });
+
+        // 19.3. Initialize theme on load
+        // Check local storage for saved preference, default to dark-mode if none found
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            // Check system preference (optional)
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            setTheme(prefersDark ? 'dark-mode' : 'light-mode');
+        }
+
+        /* --- Scroll Reveal Animation Logic --- */
+        
+        // 19.4. Setup Intersection Observer for scroll-reveal
+        document.addEventListener("DOMContentLoaded", () => {
+            // Get all elements that need the scroll-reveal effect
+            const revealElements = document.querySelectorAll('.reveal');
+
+            // Options for the Intersection Observer
+            const observerOptions = {
+                root: null, // relative to the viewport
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the item is visible
+            };
+
+            // Callback function when elements intersect the viewport
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    // If the element is currently visible in the viewport
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                        // Stop observing once it has been revealed
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            // Create the observer and attach it to the elements
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            revealElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+    </script>
+</body>
+</html>
