@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "public": true,
+  "framework": null,
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" }
+    { "src": "new por.html", "use": "@vercel/static" },
+    { "src": ".*", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/(.*)", "dest": "/new por.html" }
   ]
 }
